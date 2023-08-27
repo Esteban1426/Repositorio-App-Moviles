@@ -9,6 +9,7 @@ public class Clase_Main
 		
 		Musica.Cancion("Song.wav");
 		Musica.start();
+		System.out.println("<<<<<<<REPRODUCIENDO CANCION>>>>>> \n");
 		Datos_cancion.start();
 		
 		
