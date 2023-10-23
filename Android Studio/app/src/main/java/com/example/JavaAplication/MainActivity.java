@@ -112,5 +112,4 @@ public class MainActivity extends AppCompatActivity {
             return base * calcularPotencia(base, exponente - 1);
         }
     }
-
 }
