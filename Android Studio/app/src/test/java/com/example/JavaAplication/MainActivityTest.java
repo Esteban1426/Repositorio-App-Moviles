@@ -25,7 +25,9 @@ public class MainActivityTest {
     public void Multiplicar() {
         Test_Calculadora test = new Test_Calculadora();
         int resultado = test.multiplicar(4, 6);
+
         assertEquals(26, resultado);
+
     }
 
     @Test

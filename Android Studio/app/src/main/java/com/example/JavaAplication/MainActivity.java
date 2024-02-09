@@ -2,6 +2,7 @@ package com.example.JavaAplication;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
@@ -29,6 +30,7 @@ public class MainActivity extends AppCompatActivity {
         Button btnMultiplicacion = findViewById(R.id.Multiplicacion);
         Button btnDivision = findViewById(R.id.Division);
         Button btnPotenciacion = findViewById(R.id.Potencia);
+        Button btnFactorial = findViewById(R.id.Factorial);
 
         btnSuma.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -62,6 +64,12 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Potenciar(view);
+            }
+        });
+        btnFactorial.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Factorial(view);
             }
         });
     }
@@ -111,5 +119,32 @@ public class MainActivity extends AppCompatActivity {
         } else {
             return base * calcularPotencia(base, exponente - 1);
         }
+    }
+
+    public void Factorial(View view) {
+        int valor = Integer.parseInt(v1.getText().toString());
+        long resultado = calcularFactorial(valor);
+
+        if (resultado == -1) {
+            mensaje.setText("No se puede calcular el factorial de un número negativo.");
+        } else {
+            mensaje.setText("El factorial de " + valor + " es: " + resultado);
+        }
+    }
+
+    public long calcularFactorial(int n) {
+        if (n < 0) {
+            // Manejo de casos negativos, el factorial no está definido para números negativos.
+            return -1;  // Puedes elegir otro valor de retorno o lanzar una excepción según tus necesidades.
+        } else if (n == 0 || n == 1) {
+            return 1;
+        } else {
+            return n * calcularFactorial(n - 1);
+        }
+    }
+
+    public void MetodoF(View view){
+        Intent intent = new Intent(this, MainActivity3.class);
+        startActivity(intent);
     }
 }
