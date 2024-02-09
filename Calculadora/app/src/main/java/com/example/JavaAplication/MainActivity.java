@@ -134,8 +134,7 @@ public class MainActivity extends AppCompatActivity {
 
     public long calcularFactorial(int n) {
         if (n < 0) {
-            // Manejo de casos negativos, el factorial no está definido para números negativos.
-            return -1;  // Puedes elegir otro valor de retorno o lanzar una excepción según tus necesidades.
+            return -1;
         } else if (n == 0 || n == 1) {
             return 1;
         } else {
