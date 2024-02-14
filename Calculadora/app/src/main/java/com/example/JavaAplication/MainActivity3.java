@@ -8,6 +8,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import androidx.appcompat.app.AlertDialog;
 
 public class MainActivity3 extends AppCompatActivity {
 
@@ -32,19 +33,35 @@ public class MainActivity3 extends AppCompatActivity {
         });
     }
 
+    public void mostrarAlerta(String titulo, String mensaje) {
+        AlertDialog.Builder Estructura = new AlertDialog.Builder(this);
+        Estructura.setTitle(titulo)
+                .setMessage(mensaje)
+                .setPositiveButton("Aceptar", null);
+
+        AlertDialog alert = Estructura.create();
+        alert.show();
+    }
+
     public void calcularMetodoFibonacci() {
-        int n = Integer.parseInt(NumeroUsuario.getText().toString());
+        String Numero = NumeroUsuario.getText().toString();
 
-        StringBuilder sequenceBuilder = new StringBuilder();
-        for (int i = 0; i <= n; i++) {
-            int fib = fibonacci(i);
-            sequenceBuilder.append(fib);
-            if (i < n) {
-                sequenceBuilder.append(", ");
+        if (Numero.isEmpty()) {
+            mostrarAlerta("Error", "Por favor, ingresa un número primero.");
+        } else {
+            int n = Integer.parseInt(Numero);
+
+            StringBuilder sequenceBuilder = new StringBuilder();
+            for (int i = 0; i <= n; i++) {
+                int fib = fibonacci(i);
+                sequenceBuilder.append(fib);
+                if (i < n) {
+                    sequenceBuilder.append(", ");
+                }
             }
-        }
 
-        Listafibonacci.setText("Lista de Fibonacci hasta la posición " + n + ":\n" + sequenceBuilder.toString());
+            Listafibonacci.setText("Lista de Fibonacci hasta la posición " + n + ":\n" + sequenceBuilder.toString());
+        }
     }
 
     public int fibonacci(int n) {
