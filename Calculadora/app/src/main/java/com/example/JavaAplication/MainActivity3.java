@@ -44,16 +44,16 @@ public class MainActivity3 extends AppCompatActivity {
     }
 
     public void calcularMetodoFibonacci() {
-        String Numero = NumeroUsuario.getText().toString();
+        String input = NumeroUsuario.getText().toString();
 
-        if (Numero.isEmpty()) {
+        if (input.isEmpty()) {
             mostrarAlerta("Error", "Por favor, ingresa un número primero.");
         } else {
-            int n = Integer.parseInt(Numero);
+            int n = Integer.parseInt(input);
 
             StringBuilder sequenceBuilder = new StringBuilder();
             for (int i = 0; i <= n; i++) {
-                int fib = fibonacci(i);
+                long fib = fibonacci(i);
                 sequenceBuilder.append(fib);
                 if (i < n) {
                     sequenceBuilder.append(", ");
@@ -64,16 +64,16 @@ public class MainActivity3 extends AppCompatActivity {
         }
     }
 
-    public int fibonacci(int n) {
+    public long fibonacci(long n) {
         if (n == 0) {
             return 0;
         } else if (n == 1) {
             return 1;
         }
 
-        int a = 0;
-        int b = 1;
-        int fib = 0;
+        long a = 0;
+        long b = 1;
+        long fib = 0;
 
         for (int i = 2; i <= n; i++) {
             fib = a + b;
